@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
 public class Employer {
     @Id
-    @Column(name = "id")
+    @Column(name = "user_id")
     private int id;
 
     @Column(name = "company_name")
@@ -35,7 +35,7 @@ public class Employer {
     private List<JobAdvertisement> jobAdvertisements;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Employer(int id, String companyName, String phone_number, boolean verifiedBySystem, String webAddress) {

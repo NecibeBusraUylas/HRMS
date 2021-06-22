@@ -34,7 +34,7 @@ public class EmployerManager implements EmployerService{
 	public Result add(EmployerRegisterDto employer) {
 		Result businessRules = BusinessRules.run(
 				isPasswordsMatch(employer.getPassword(), employer.getVerifyPassword()),
-	            isEmailandWebAddresseDomainSame(employer.getEmail(), employer.getWebAddress())
+	            isEmailandWebAddressDomainSame(employer.getEmail(), employer.getWebAddress())
 	    );
 	    if (businessRules != null) return businessRules;
 	    User userToRegister = new User(employer.getEmail(), employer.getPassword(), false, UUID.randomUUID().toString());
@@ -69,7 +69,7 @@ public class EmployerManager implements EmployerService{
 	}
 	
 
-    private Result isEmailandWebAddresseDomainSame(String email, String webAddress) {
+    private Result isEmailandWebAddressDomainSame(String email, String webAddress) {
         String[] emailSplit = email.split("@");
         if (emailSplit.length < 2)
             return new ErrorResult("Email format error!");

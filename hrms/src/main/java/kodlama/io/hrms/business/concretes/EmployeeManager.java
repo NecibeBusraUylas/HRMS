@@ -30,7 +30,7 @@ public class EmployeeManager implements EmployeeService{
 	private ValidationService validationService;
 	
 	@Autowired
-	public EmployeeManager(EmployeeDao employeeDao, UserService userService, ValidationService ValidationService) {
+	public EmployeeManager(EmployeeDao employeeDao, UserService userService, ValidationService validationService) {
 		this.employeeDao = employeeDao;
 	    this.userService = userService;
 	    this.validationService = validationService;

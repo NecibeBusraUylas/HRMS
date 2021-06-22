@@ -17,11 +17,11 @@ import kodlama.io.hrms.entities.dtos.JobAdvertisementAddDto;
 
 @RestController
 @RequestMapping("/api/jobadvertisements")
-public class JobAdvertisementController {
+public class JobAdvertisementsController {
     private JobAdvertisementService jobAdvertisementService;
 
     @Autowired
-    public JobAdvertisementController(JobAdvertisementService jobAdvertisementService) {
+    public JobAdvertisementsController(JobAdvertisementService jobAdvertisementService) {
         this.jobAdvertisementService = jobAdvertisementService;
     }
 

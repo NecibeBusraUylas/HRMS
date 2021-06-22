@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Employee{
 
 	@Id
-	@Column(name = "id", nullable = false,updatable = false)
+	@Column(name = "user_id", nullable = false,updatable = false)
     private int id;
 	
 	@Column(name="first_Name", nullable = false)
@@ -33,7 +33,7 @@ public class Employee{
 	private Date dateOfbirth;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="id")
+	@JoinColumn(name="user_id")
 	private User user;
 	
 	@OneToMany(mappedBy = "employee",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
