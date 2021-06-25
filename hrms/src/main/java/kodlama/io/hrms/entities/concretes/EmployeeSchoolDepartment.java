@@ -32,8 +32,7 @@ public class EmployeeSchoolDepartment {
     @JoinColumn(name="department_id")
     private SchoolDepartment schoolDepartment;
 
-	public EmployeeSchoolDepartment(Date startDate, Date graduationDate, Employee employee,
-			SchoolDepartment schoolDepartment) {
+	public EmployeeSchoolDepartment(Employee employee, SchoolDepartment schoolDepartment, Date startDate, Date graduationDate) {
 		this.startDate = startDate;
 		this.graduationDate = graduationDate;
 		this.employee = employee;

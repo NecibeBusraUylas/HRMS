@@ -14,16 +14,16 @@ import kodlama.io.hrms.entities.concretes.SystemUser;
 @RestController
 @RequestMapping("/api/systemusers")
 public class SystemUsersController {
+	
+	private SystemUserService systemUserService;
+	 
+    @Autowired
+    public SystemUsersController(SystemUserService systemUserService) {
+    	this.systemUserService = systemUserService;
+	}
 
-	 private SystemUserService systemUserService;
-
-	    @Autowired
-	    public SystemUsersController(SystemUserService systemUserService) {
-	        this.systemUserService = systemUserService;
-	    }
-
-	    @GetMapping("/getall")
-	    public DataResult<List<SystemUser>> getAll() {
-	        return this.systemUserService.getAll();
-	    }
+    @GetMapping("/getall")
+	public DataResult<List<SystemUser>> getAll() {
+		return this.systemUserService.getAll();
+	}
 }

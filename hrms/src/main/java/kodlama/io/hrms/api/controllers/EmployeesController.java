@@ -57,7 +57,7 @@ public class EmployeesController {
         for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
             valiadationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
         }
-        ErrorDataResult<Object> errors = new ErrorDataResult<Object>(valiadationErrors, "Doğrulama hatası.");
+        ErrorDataResult<Object> errors = new ErrorDataResult<Object>(valiadationErrors, "Validation error!");
         return errors;
     }
 }

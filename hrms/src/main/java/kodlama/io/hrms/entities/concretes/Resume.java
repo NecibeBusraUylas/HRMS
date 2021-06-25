@@ -9,16 +9,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
+@Entity
 @Table(name = "resumes")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Resume {
-
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false, updatable = false)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "github_address", nullable = true)
@@ -35,31 +34,31 @@ public class Resume {
 
     @Column(name = "create_date", nullable = false)
     private Date createDate;
-    
+
     @ManyToOne
-    @JoinColumn(name="employee_id")
+    @JoinColumn(name = "employee_id")
     @JsonIgnore
     private Employee employee;
-    
-    @OneToMany(mappedBy = "resume",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+
+    @OneToMany(mappedBy = "resume")
     @JsonIgnore
     private Set<JobExperience> jobExperiences;
-    
-    @OneToMany(mappedBy = "resume",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+
+    @OneToMany(mappedBy = "resume")
     @JsonIgnore
     Set<ResumeForeignLanguage> resumeForeignLanguages;
-    
-    @OneToMany(mappedBy = "resume",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+
+    @OneToMany(mappedBy = "resume")
     @JsonIgnore
     Set<ResumeSkill> resumeSkills;
 
-	public Resume(String githubAddress, String linkedinAddress, String coverLetter, String picture, Date createDate,
-			Employee employee) {
-		this.githubAddress = githubAddress;
-		this.linkedinAddress = linkedinAddress;
-		this.coverLetter = coverLetter;
-		this.picture = picture;
-		this.createDate = new Date();
-		this.employee = employee;
-	}
+    public Resume(String githubAddress, String linkedinAddress, String coverLetter, String picture,
+                  Employee employee) {
+        this.githubAddress = githubAddress;
+        this.linkedinAddress = linkedinAddress;
+        this.coverLetter = coverLetter;
+        this.picture = picture;
+        this.createDate = new Date();
+        this.employee = employee;
+    }
 }

@@ -34,7 +34,8 @@ public class EmployerManager implements EmployerService{
 	public Result add(EmployerRegisterDto employer) {
 		Result businessRules = BusinessRules.run(
 				isPasswordsMatch(employer.getPassword(), employer.getVerifyPassword()),
-	            isEmailandWebAddressDomainSame(employer.getEmail(), employer.getWebAddress())
+	            isEmailandWebAddressDomainSame(employer.getEmail(), employer.getWebAddress()),
+	            isEmailAlreadyExist(employer.getEmail())
 	    );
 	    if (businessRules != null) return businessRules;
 	    User userToRegister = new User(employer.getEmail(), employer.getPassword(), false, UUID.randomUUID().toString());

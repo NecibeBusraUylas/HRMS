@@ -12,26 +12,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResumeForeignLanguage {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false,updatable = false)
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "level",nullable = false)
-    private String level;
+    @Column(name = "level")
+    private int level;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name="resume_id")
+    @ManyToOne
+    @JoinColumn(name = "resume_id")
     private Resume resume;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name="language_id")
+
+    @ManyToOne
+    @JoinColumn(name = "foreign_language_id")
     private ForeignLanguage foreignLanguage;
-    
-    public ResumeForeignLanguage(String level, Resume resume, ForeignLanguage foreignLanguage) {
-  		this.level = level;
-  		this.resume = resume;
-  		this.foreignLanguage = foreignLanguage;
-  	}
+
+    public ResumeForeignLanguage(Resume resume, ForeignLanguage foreignLanguage, int level) {
+        this.resume = resume;
+        this.foreignLanguage = foreignLanguage;
+        this.level = level;
+    }
 }

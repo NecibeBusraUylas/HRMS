@@ -15,30 +15,30 @@ import java.util.Date;
 public class EmployeeRegisterDto {
 
 	 @NotBlank
-	    @NotNull
-	    private String firstName;
+	 @NotNull
+	 private String firstName;
 
-	    @NotBlank
-	    @NotNull
-	    private String lastName;
+	 @NotBlank
+	 @NotNull
+	 private String lastName;
 
-	    @NotBlank
-	    @NotNull
-	    @Size(min = 11, max = 11)
-	    private String nationalId;
+	 @NotBlank
+	 @NotNull
+	 @Size(min = 11, max = 11)
+	 private String nationalId;
+	 
+	 @NotNull
+	 private Date dateOfBirth;
+	 
+	 @NotBlank
+	 @NotNull
+	 private String email;
 
-	    @NotNull
-	    private Date dateOfBirth;
+	 @NotBlank
+	 @NotNull
+	 private String password;
 
-	    @NotBlank
-	    @NotNull
-	    private String email;
-
-	    @NotBlank
-	    @NotNull
-	    private String password;
-
-	    @NotBlank
-	    @NotNull
-	    private String verifyPassword;
+	 @NotBlank
+	 @NotNull
+	 private String verifyPassword;
 }

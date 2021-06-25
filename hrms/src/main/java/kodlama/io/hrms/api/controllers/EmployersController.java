@@ -45,19 +45,19 @@ public class EmployersController {
 		return this.employerService.getById(id);
 	}
 	
-	 @PostMapping("/add")
-	    public ResponseEntity<?> add(@Valid @RequestBody EmployerRegisterDto employer) {
-	        return ResponseEntity.ok(this.employerService.add(employer));
-	    }
-
-	    @ExceptionHandler(MethodArgumentNotValidException.class)
-	    @ResponseStatus(HttpStatus.BAD_REQUEST)
-	    public ErrorDataResult<Object> handleValidationExeption(MethodArgumentNotValidException exception) {
-	        Map<String, String> validationErrors = new HashMap<String, String>();
-	        for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
-	            validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
-	        }
-	        ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors, "Doğrulama hataları.");
-	        return errors;
-	    }
+	@PostMapping("/add")
+	public ResponseEntity<?> add(@Valid @RequestBody EmployerRegisterDto employer) {
+		return ResponseEntity.ok(this.employerService.add(employer));
+	}
+	
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exception) {
+		Map<String, String> valiadationErrors = new HashMap<String, String>();
+        for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
+            valiadationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
+        }
+        ErrorDataResult<Object> errors = new ErrorDataResult<Object>(valiadationErrors, "Validation error!");
+        return errors;
+    }
 }

@@ -38,7 +38,6 @@ public class JobExperience {
     private Resume resume;
 
 	public JobExperience(String officeName, String position, Date startDate, Date endDate, Resume resume) {
-		super();
 		this.officeName = officeName;
 		this.position = position;
 		this.startDate = startDate;

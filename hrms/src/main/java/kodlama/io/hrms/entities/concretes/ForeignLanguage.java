@@ -16,16 +16,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "resumeForeignLanguages"})
 public class ForeignLanguage {
-	
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, updatable = false)
+    @Column(name = "id", nullable = false, insertable = false, updatable = false)
     private int id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "foreignLanguage",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "foreignLanguage")
     @JsonIgnore
-    Set<ResumeForeignLanguage> foreignLanguages;
+    Set<ResumeForeignLanguage> resumeForeignLanguages;
 }

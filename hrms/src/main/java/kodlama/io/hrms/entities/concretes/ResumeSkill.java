@@ -29,8 +29,7 @@ public class ResumeSkill {
 	@JoinColumn(name="skill_id")
 	private Skill skill;
 
-	public ResumeSkill(int level, Resume resume, Skill skill) {
-		super();
+	public ResumeSkill(Resume resume, Skill skill,int level) {
 		this.level = level;
 		this.resume = resume;
 		this.skill = skill;
